@@ -15,4 +15,16 @@ export interface BannerSettings {
   customText: string;
   customImage: string | null;
   accentColor: string;
+  backgroundColor?: string;
+  backgroundImage?: string;
+  backgroundStyle?: "image" | "color";
+  settings: any;
+  updateSettings: any;
+  resetSettings: any;
+}
+
+export interface BannerTypes {
+  settings: BannerSettings;
+  updateSettings: any;
+  resetSettings: any;
 }

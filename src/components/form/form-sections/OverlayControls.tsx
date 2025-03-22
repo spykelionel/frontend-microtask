@@ -1,16 +1,13 @@
 import { Sliders } from "lucide-react";
 import React from "react";
-import { FormSectionProps } from "../types";
+import useBannerSettings from "../../../hooks/useBannerSettings";
 
-const OverlayControls: React.FC<FormSectionProps> = ({
-  settings,
-  updateSettings,
-  accentColor,
-}) => {
+const OverlayControls: React.FC = () => {
+  const { settings, updateSettings } = useBannerSettings();
   return (
     <div className="mb-4" data-testid="overlay-controls">
-      <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center">
-        <Sliders size={18} className="mr-2" style={{ color: accentColor }} />
+      <label className="text-sm font-medium text-gray-700 mb-2 flex items-center">
+        <Sliders size={18} className="mr-2 text-blue-500" />
         Overlay Opacity: {settings.overlayOpacity}
       </label>
       <input
@@ -22,8 +19,7 @@ const OverlayControls: React.FC<FormSectionProps> = ({
         onChange={(e) =>
           updateSettings({ overlayOpacity: parseFloat(e.target.value) })
         }
-        className="w-full accent-blue-500"
-        style={{ accentColor }}
+        className="w-full accent-blue-500 "
         data-testid="opacity-slider"
       />
       <div className="mt-4">

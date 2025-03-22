@@ -39,8 +39,11 @@ export const bannerPresets: BannerPresets = {
 export const DEFAULT_SETTINGS: BannerSettings = {
   style: "beach",
   overlayOpacity: 0.5,
-  customTitle: "",
-  customText: "",
+  customTitle: "The funny tickler riding the road",
+  customText: "Reading this book is awesome and amazing. You ha",
   customImage: null,
   accentColor: "#3498db",
+  settings: undefined,
+  updateSettings: undefined,
+  resetSettings: undefined,
 };
