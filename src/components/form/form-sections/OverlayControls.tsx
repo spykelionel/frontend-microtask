@@ -19,21 +19,25 @@ const OverlayControls: React.FC = () => {
         onChange={(e) =>
           updateSettings({ overlayOpacity: parseFloat(e.target.value) })
         }
-        className="w-full accent-blue-500 "
+        className="w-full accent-blue-500"
         data-testid="opacity-slider"
       />
-      <div className="mt-4">
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          Accent Color
-        </label>
-        <input
-          type="color"
-          value={settings.accentColor}
-          onChange={(e) => updateSettings({ accentColor: e.target.value })}
-          className="w-full h-10 border border-gray-300 rounded-md cursor-pointer"
-          data-testid="color-picker"
-        />
-      </div>
+      {settings.backgroundStyle === "color" && (
+        <div className="mt-4">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Background Color
+          </label>
+          <input
+            type="color"
+            value={settings.backgroundColor}
+            onChange={(e) =>
+              updateSettings({ backgroundColor: e.target.value })
+            }
+            className="w-full h-10 border border-gray-300 rounded-md cursor-pointer"
+            data-testid="color-picker"
+          />
+        </div>
+      )}
     </div>
   );
 };

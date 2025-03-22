@@ -13,6 +13,7 @@ export interface BannerSettings {
   overlayOpacity: number;
   customTitle: string;
   customText: string;
+  textColor: string;
   customImage: string | null;
   accentColor: string;
   backgroundColor?: string;

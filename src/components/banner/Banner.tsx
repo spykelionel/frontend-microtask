@@ -14,10 +14,20 @@ const Banner: React.FC = () => {
     }
   };
 
+  const backgroundColorStyle = {
+    backgroundColor: settings.backgroundColor,
+  };
+  const backgroundImageStyle = {
+    backgroundImage: `url(${settings.backgroundImage})`,
+  };
   return (
     <div
       className="relative h-96 w-full bg-cover bg-center flex items-center justify-center"
-      style={{ backgroundImage: `url(${settings.backgroundImage})` }}
+      style={
+        settings.backgroundStyle == "color"
+          ? backgroundColorStyle
+          : backgroundImageStyle
+      }
       data-testid="banner-container"
     >
       <div
@@ -29,10 +39,15 @@ const Banner: React.FC = () => {
         <h1
           className="text-4xl font-bold mb-4 text-shadow"
           data-testid="banner-title"
+          style={{ color: settings.textColor }}
         >
           {settings.customTitle}
         </h1>
-        <p className="text-lg text-shadow" data-testid="banner-text">
+        <p
+          className="text-lg text-shadow"
+          data-testid="banner-text"
+          style={{ color: settings.textColor }}
+        >
           {settings.customText}
         </p>
       </div>

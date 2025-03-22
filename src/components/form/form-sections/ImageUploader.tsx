@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import useBannerContext from "../../../hooks/useBannerContext";
 
 const ImageUploader: React.FC = () => {
-  const { settings, updateSettings } = useBannerContext();
+  const { updateSettings } = useBannerContext();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [fileName, setFileName] = useState<string | null>(null);
@@ -14,7 +14,7 @@ const ImageUploader: React.FC = () => {
       setFileName(file.name);
       const reader = new FileReader();
       reader.onload = (e) => {
-        updateSettings({ customImage: e.target?.result as string });
+        updateSettings({ backgroundImage: e.target?.result as string });
       };
       reader.readAsDataURL(file);
     }
@@ -43,7 +43,7 @@ const ImageUploader: React.FC = () => {
       setFileName(file.name);
       const reader = new FileReader();
       reader.onload = (e) => {
-        updateSettings({ customImage: e.target?.result as string });
+        updateSettings({ backgroundImage: e.target?.result as string });
       };
       reader.readAsDataURL(file);
     }
