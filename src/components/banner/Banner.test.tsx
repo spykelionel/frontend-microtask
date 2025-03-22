@@ -5,7 +5,7 @@ import Banner from "./Banner";
 
 describe("Banner container renders", () => {
   it("Ensure the banner container renders on he screen", () => {
-    render(<Banner backgroundImage="" overlayOpacity={1} text="" title="" />);
+    render(<Banner />);
     expect(screen.getByTestId("banner-container")).toBeInTheDocument();
   });
 });

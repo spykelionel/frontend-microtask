@@ -1,13 +1,7 @@
 import React from "react";
-import { useBannerContext } from "../../context/BannerContext";
-import { BannerProps } from "./types";
+import useBannerContext from "../../hooks/useBannerContext";
 
-const Banner: React.FC<BannerProps> = ({
-  backgroundImage,
-  overlayOpacity,
-  title,
-  text,
-}) => {
+const Banner: React.FC = () => {
   const { updateSettings, settings } = useBannerContext();
   const changeBannerImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -23,12 +17,12 @@ const Banner: React.FC<BannerProps> = ({
   return (
     <div
       className="relative h-96 w-full bg-cover bg-center flex items-center justify-center"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
+      style={{ backgroundImage: `url(${settings.backgroundImage})` }}
       data-testid="banner-container"
     >
       <div
         className="absolute inset-0"
-        style={{ backgroundColor: `rgba(0, 0, 0, ${overlayOpacity})` }}
+        style={{ backgroundColor: `rgba(0, 0, 0, ${settings.overlayOpacity})` }}
         data-testid="banner-overlay"
       ></div>
       <div className="relative z-10 text-center text-white max-w-3xl px-4">

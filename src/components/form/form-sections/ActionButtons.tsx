@@ -1,5 +1,5 @@
 import React from "react";
-import { useBannerContext } from "../../../context/BannerContext";
+import useBannerContext from "../../../hooks/useBannerContext";
 
 const ActionButtons: React.FC = () => {
   const { resetSettings } = useBannerContext();

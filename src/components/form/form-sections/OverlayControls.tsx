@@ -1,6 +1,6 @@
 import { Sliders } from "lucide-react";
 import React from "react";
-import useBannerSettings from "../../../hooks/useBannerSettings";
+import useBannerSettings from "../../../hooks/useBannerContext";
 
 const OverlayControls: React.FC = () => {
   const { settings, updateSettings } = useBannerSettings();

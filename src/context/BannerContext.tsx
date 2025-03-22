@@ -1,8 +1,8 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 import { DEFAULT_SETTINGS } from "../lib/constants/presets";
 import { BannerSettings, BannerTypes } from "../types";
 
-const BannerContext = createContext<BannerTypes>({
+export const BannerContext = createContext<BannerTypes>({
   resetSettings: () => {},
   updateSettings: () => {},
   settings: DEFAULT_SETTINGS,
@@ -37,5 +37,3 @@ export default function BannerContextProvider({
     </BannerContext.Provider>
   );
 }
-
-export const useBannerContext = () => useContext(BannerContext);

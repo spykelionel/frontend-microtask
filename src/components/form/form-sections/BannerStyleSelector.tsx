@@ -1,6 +1,6 @@
 import { ImageIcon } from "lucide-react";
 import React from "react";
-import { useBannerContext } from "../../../context/BannerContext";
+import useBannerContext from "../../../hooks/useBannerContext";
 
 const BannerStyleSelector: React.FC = () => {
   const { settings, updateSettings } = useBannerContext();

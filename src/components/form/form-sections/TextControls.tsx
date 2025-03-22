@@ -1,6 +1,6 @@
 import { FileText, Type } from "lucide-react";
 import React from "react";
-import { useBannerContext } from "../../../context/BannerContext";
+import useBannerContext from "../../../hooks/useBannerContext";
 
 const TextControls: React.FC = () => {
   const { settings, updateSettings } = useBannerContext();

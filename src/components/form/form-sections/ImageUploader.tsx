@@ -1,6 +1,6 @@
 import { Camera, CheckCircle, Upload } from "lucide-react";
 import React, { useRef, useState } from "react";
-import { useBannerContext } from "../../../context/BannerContext";
+import useBannerContext from "../../../hooks/useBannerContext";
 
 const ImageUploader: React.FC = () => {
   const { settings, updateSettings } = useBannerContext();
@@ -89,7 +89,7 @@ const ImageUploader: React.FC = () => {
       </div>
 
       {/* Success state */}
-      {settings.customImage && (
+      {fileName && (
         <div className="mt-3 flex items-center justify-between p-2 bg-green-50 rounded-md">
           <div className="flex items-center">
             <CheckCircle size={16} className="mr-2 text-green-600" />
