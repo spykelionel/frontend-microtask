@@ -48,7 +48,7 @@ const Banner: React.FC = () => {
           data-testid="banner-text"
           style={{ color: settings.textColor }}
         >
-          {settings.customText}
+          {settings.customeDescription}
         </p>
       </div>
       <div className="flex relative  cursor-pointer ">

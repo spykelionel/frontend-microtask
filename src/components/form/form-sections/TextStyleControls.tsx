@@ -14,7 +14,7 @@ const TextStyleControls: React.FC = () => {
           value={settings.textColor}
           onChange={(e) => updateSettings({ textColor: e.target.value })}
           className="w-full h-10 border border-gray-300 rounded-md cursor-pointer"
-          data-testid="color-picker"
+          data-testid="text-color-picker"
         />
       </div>
     </div>

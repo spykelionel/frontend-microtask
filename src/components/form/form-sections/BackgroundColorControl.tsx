@@ -12,7 +12,7 @@ function BackgroundColorControl() {
         value={settings.backgroundColor}
         onChange={(e) => updateSettings({ backgroundColor: e.target.value })}
         className="w-full h-10 border border-gray-300 rounded-md cursor-pointer"
-        data-testid="color-picker"
+        data-testid="background-color-picker"
       />
     </div>
   );
