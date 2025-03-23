@@ -1,8 +1,6 @@
-// src/hooks/useBannerSettings.ts
 import { useContext } from "react";
 import { BannerContext } from "../context/BannerContext";
-
-export const useBannerContext = () => {
+const useBannerContext = () => {
   return useContext(BannerContext);
 };
 
