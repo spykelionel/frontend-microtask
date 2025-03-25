@@ -20,3 +20,7 @@ export const DEFAULT_SETTINGS: BannerSettings = {
   updateSettings: undefined,
   resetSettings: undefined,
 };
+
+export const MAX_TITLE_LENGTH = 60;
+export const MAX_DESCRIPTION_LENGTH = 500;
+export const TYPING_DELAY = 800;

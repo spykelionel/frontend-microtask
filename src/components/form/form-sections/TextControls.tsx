@@ -1,22 +1,23 @@
 import { FileText, Type } from "lucide-react";
 import React from "react";
 import useBannerContext from "../../../hooks/useBannerContext";
+import {
+  MAX_DESCRIPTION_LENGTH,
+  MAX_TITLE_LENGTH,
+  TYPING_DELAY,
+} from "../../../lib/constants/presets";
 
 const TextControls: React.FC = () => {
   const { settings, updateSettings } = useBannerContext();
-  const maxTitleLength = 60;
-  const maxDescriptionLength = 200;
-
   const [isTypingTitle, setIsTypingTitle] = React.useState(false);
   const [isTypingDescription, setIsTypingDescription] = React.useState(false);
 
   // Timers to detect end of typing
   const titleTimeoutRef = React.useRef<any>(null);
   const descriptionTimeoutRef = React.useRef<any>(null);
-  const TYPING_DELAY = 800; // milliseconds
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.slice(0, maxTitleLength);
+    const value = e.target.value.slice(0, MAX_TITLE_LENGTH);
     updateSettings({ customTitle: value });
     setIsTypingTitle(true);
 
@@ -31,7 +32,7 @@ const TextControls: React.FC = () => {
   const handleDescriptionChange = (
     e: React.ChangeEvent<HTMLTextAreaElement>
   ) => {
-    const value = e.target.value.slice(0, maxDescriptionLength);
+    const value = e.target.value.slice(0, MAX_DESCRIPTION_LENGTH);
     updateSettings({ customeDescription: value });
     setIsTypingDescription(true);
 
@@ -55,13 +56,13 @@ const TextControls: React.FC = () => {
           value={settings.customTitle}
           onChange={handleTitleChange}
           placeholder="Enter custom title"
-          maxLength={maxTitleLength}
+          maxLength={MAX_TITLE_LENGTH}
           className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
           data-testid="title-input"
         />
         <div className="flex justify-between text-xs text-gray-500 mt-1">
           <span>
-            {settings.customTitle.length}/{maxTitleLength}
+            {settings.customTitle.length}/{MAX_TITLE_LENGTH}
           </span>
           {isTypingTitle && <span>Typing...</span>}
         </div>
@@ -77,13 +78,13 @@ const TextControls: React.FC = () => {
           onChange={handleDescriptionChange}
           placeholder="Enter custom description"
           rows={4}
-          maxLength={maxDescriptionLength}
+          maxLength={MAX_DESCRIPTION_LENGTH}
           className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
           data-testid="text-input"
         />
         <div className="flex justify-between text-xs text-gray-500 mt-1">
           <span>
-            {settings.customeDescription.length}/{maxDescriptionLength}
+            {settings.customeDescription.length}/{MAX_DESCRIPTION_LENGTH}
           </span>
           {isTypingDescription && <span>Typing...</span>}
         </div>
