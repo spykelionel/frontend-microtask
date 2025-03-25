@@ -37,8 +37,8 @@ A React-based dashboard for creating customized banners with various styling opt
 ### Installation
 
 ```bash
-git clone https://github.com/yourusername/banner-customizer.git
-cd banner-customizer
+git clone https://github.com/spykelionel/frontend-microtask.git
+cd frontend-microtask
 npm install
 # or
 yarn
