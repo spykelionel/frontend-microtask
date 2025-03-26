@@ -24,106 +24,80 @@ const Banner: React.FC = () => {
 
   return (
     <div
-      className="relative w-full overflow-hidden"
+      className="relative flex items-start border border-gray-300 shadow-md rounded p-4 max-w-3xl mx-auto mt-4"
       data-testid="banner-container"
+      style={{ backgroundColor: settings.backgroundColor }}
     >
-      {/* Background Image or Color */}
-      <div className="absolute inset-0 z-0">
-        {settings.backgroundStyle === "color" ? (
-          <div
-            className="w-full h-full"
-            style={{ backgroundColor: settings.backgroundColor }}
+      {/* Left side: Placeholder / image area */}
+      <div
+        className="flex-shrink-0 w-20 h-20 bg-gray-100 border border-gray-200 
+                   flex items-center justify-center relative mr-4"
+        aria-label="Placeholder image"
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+        onTouchStart={() => setIsHovering(true)}
+        onTouchEnd={() => setIsHovering(false)}
+      >
+        <input
+          type="file"
+          className="hidden"
+          onChange={changeBannerImage}
+          id="image"
+          accept="image/*"
+        />
+
+        {settings.customImage ? (
+          <img
+            className="w-full h-full object-cover"
+            src={settings.customImage || "/placeholder.svg"}
+            alt="Banner placeholder"
           />
         ) : (
-          <div
-            className="w-full h-full bg-cover bg-center"
-            style={{
-              backgroundImage: `url(${settings.backgroundImage})`,
-            }}
-          />
+          <div className="text-gray-500 flex flex-col items-center">
+            <Camera size={24} />
+            <span className="text-sm">Placeholder</span>
+          </div>
         )}
 
-        {/* Overlay */}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundColor: `rgba(0, 0, 0, ${settings.overlayOpacity})`,
-          }}
-          data-testid="banner-overlay"
-        />
-      </div>
-
-      <div className="relative z-10 container mx-auto px-4 py-12 md:py-20">
-        <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
-          {/* User Avatar with upload functionality */}
-          <div className="relative" aria-label="Profile image">
-            <input
-              type="file"
-              className="hidden"
-              onChange={changeBannerImage}
-              id="image"
-              accept="image/*"
-            />
-
-            {/* Image or placeholder */}
-            <div
-              className="relative w-28 h-28 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white shadow-xl"
-              onMouseEnter={() => setIsHovering(true)}
-              onMouseLeave={() => setIsHovering(false)}
-              onTouchStart={() => setIsHovering(true)}
-              onTouchEnd={() => setIsHovering(false)}
-            >
-              {settings.customImage ? (
-                <img
-                  className="h-full w-full object-cover"
-                  src={settings.customImage || "/placeholder.svg"}
-                  alt="Profile"
-                />
-              ) : (
-                <div className="h-full w-full bg-gray-200 flex items-center justify-center">
-                  <Camera size={32} className="text-gray-500" />
-                </div>
-              )}
-
-              {/* Overlay for image change */}
-              <label htmlFor="image" className="cursor-pointer">
-                <div
-                  className={`absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center transition-opacity duration-200 ${
-                    isHovering || !settings.customImage
-                      ? "opacity-100"
-                      : "opacity-0"
-                  }`}
-                >
-                  <p
-                    className="text-center text-white font-medium text-sm px-2"
-                    data-testid="overlay-text"
-                  >
-                    {settings.customImage ? "Change image" : "Add image"}
-                  </p>
-                </div>
-              </label>
-            </div>
-          </div>
-
-          {/* Content Section */}
-          <div className="max-w-2xl text-center md:text-left">
-            <h1
-              className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3"
-              data-testid="banner-title"
-              style={{ color: settings.textColor || "white" }}
-            >
-              {settings.customTitle || "Your Title Here"}
-            </h1>
-
+        {/* Overlay for image change */}
+        <label htmlFor="image" className="cursor-pointer">
+          <div
+            className={`absolute inset-0 bg-black bg-opacity-50 
+              flex items-center justify-center transition-opacity duration-200 ${
+                isHovering || !settings.customImage
+                  ? "opacity-100"
+                  : "opacity-0"
+              }`}
+          >
             <p
-              className="text-base md:text-lg"
-              data-testid="banner-text"
-              style={{ color: settings.textColor || "white" }}
+              className="text-white font-medium text-sm px-2 text-center"
+              data-testid="overlay-text"
             >
-              {settings.customeDescription || "Your description here.."}
+              {settings.customImage ? "Change image" : "Add image"}
             </p>
           </div>
-        </div>
+        </label>
+      </div>
+
+      {/* Middle: Text content */}
+      <div className="flex-grow">
+        {/* Title */}
+        <h2
+          className="text-lg font-bold mb-1"
+          data-testid="banner-title"
+          style={{ color: settings.textColor }}
+        >
+          {settings.customTitle}
+        </h2>
+
+        {/* Description */}
+        <p
+          className="text-sm mb-3"
+          data-testid="banner-text"
+          style={{ color: settings.textColor }}
+        >
+          {settings.customeDescription}
+        </p>
       </div>
     </div>
   );

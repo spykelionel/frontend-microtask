@@ -7,7 +7,7 @@ export const bannerBackgrounds: Record<string, string> = {
 
 export const DEFAULT_SETTINGS: BannerSettings = {
   style: "beach",
-  textColor: "#fff",
+  textColor: "#000",
   overlayOpacity: 0.5,
   backgroundStyle: "image",
   customTitle: "The Eternal Odyssey: Journeys Through the World of Books",
